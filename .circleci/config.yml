@@ -23,7 +23,6 @@ jobs:
       - aws-s3/copy:
           from: dist
           to: 's3://circleci_tester'
-          overwrite: true
 
 workflows:
   main:
