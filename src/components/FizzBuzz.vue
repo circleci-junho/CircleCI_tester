@@ -1,6 +1,11 @@
 <template>
   <div class="fizzBuzz">
-    <span>test</span>
+    <div class="fizzBuzz__text">
+      <span>fizz!</span>
+    </div>
+    <div class="fizzBuzz__button">
+      <span>Show me</span>
+    </div>
   </div>
 </template>
 
@@ -16,5 +21,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-
+  .fizzBuzz{
+    &__text{
+      display: flex;
+      justify-content: center;
+      width: 80%; 
+    }
+  }
 </style>
