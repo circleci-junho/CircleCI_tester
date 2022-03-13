@@ -1,34 +1,3 @@
 # circleci_tester
-
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Run your unit tests
-```
-yarn test:unit
-```
-
-### Run your end-to-end tests
-```
-yarn test:e2e
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+FizzBuzz counting application for CircleCI test deploy.
+You can see the result [here](http://circleci-tester.s3-website-ap-northeast-1.amazonaws.com/)
