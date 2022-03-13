@@ -3,15 +3,20 @@ version: 2.1
 orbs:
   aws-s3: circleci/aws-s3@3.0
 
-jobs:
-  test:
+executors:
+  default:
     docker:
       - image: cimg/node:14.17
+
+jobs:
+  test:
+    executor: default
     steps:
       - checkout
       - run: yarn install
       - run: yarn jest
   deploy:
+    executor: default
     steps:
       - checkout
       - run: yarn run build
