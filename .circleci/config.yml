@@ -33,7 +33,7 @@ jobs:
       - yarn_install
       - run: yarn run build
       - aws-s3/copy:
-          from: dist
+          from: ./dist
           to: 's3://circleci-tester'
 
 workflows:
