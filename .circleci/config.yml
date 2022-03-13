@@ -1,6 +1,8 @@
 version: 2.1
+
 orbs:
   node: circleci/node@4.7.0
+
 jobs:
   test:
     docker:
@@ -10,3 +12,8 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
       - run: yarn test
+
+workflows:
+  main:
+    jobs:
+      - test
