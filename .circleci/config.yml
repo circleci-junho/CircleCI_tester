@@ -34,7 +34,7 @@ jobs:
       - run: yarn run build
       - aws-s3/copy:
           from: dist
-          to: 's3://circleci_tester'
+          to: 's3://circleci-tester'
 
 workflows:
   main:
