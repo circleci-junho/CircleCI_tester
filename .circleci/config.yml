@@ -8,17 +8,29 @@ executors:
     docker:
       - image: cimg/node:14.17
 
+commands:
+  yarn_install:
+    steps:
+      - restore_cache:
+          key: yarn-deps-cache-{{ checksum "package.json" }}
+      - run: yarn install
+      - save_cache:
+          key: yarn-deps-cache-{{ checksum "package.json" }}
+          paths:
+              - node_modules
+
 jobs:
   test:
     executor: default
     steps:
       - checkout
-      - run: yarn install
+      - yarn_install
       - run: yarn jest
   deploy:
     executor: default
     steps:
       - checkout
+      - yarn_install
       - run: yarn run build
       - aws-s3/copy:
           from: dist
@@ -32,3 +44,5 @@ workflows:
           filters:
             branches:
               only: main
+          requires:
+            - test
