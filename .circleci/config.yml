@@ -18,14 +18,21 @@ commands:
           key: yarn-deps-cache-{{ checksum "package.json" }}
           paths:
               - node_modules
-
 jobs:
   test:
     executor: default
     steps:
       - checkout
-      - yarn_install
-      - run: yarn jest
+      - run:
+          name: Install JUnit coverage reporter
+          command: yarn add --dev jest-junit
+      - run:
+          name: Run tests with JUnit as reporter
+          command: yarn jest --ci --runInBand --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: ./reports/
+      - store_test_results:
+          path: ./reports/
   deploy:
     executor: default
     steps:
